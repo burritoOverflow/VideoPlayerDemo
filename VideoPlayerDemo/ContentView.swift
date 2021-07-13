@@ -15,6 +15,7 @@ struct ContentView: View {
 
 struct PickerView: View {
     @State var currentVideoName = "MacroSeedling"
+    
     // set each section for the title of the videos
     var flowerVideos = ["MacroSeedling"]
     
@@ -48,10 +49,10 @@ struct PickerView: View {
                     }.pickerStyle(WheelPickerStyle())
                     .offset(x: 15)
                     .frame(width: 300, height: 150)
-                    .background(Color.red.colorMultiply(.blue))
+                    .background(LinearGradient(gradient: Gradient(colors: [.black, .purple]), startPoint: .bottom, endPoint: .topLeading))
                     .foregroundColor(Color.purple)
                     .cornerRadius(15)
-                    .shadow(color: .white, radius: 5, x: 0, y: 0)
+                    .shadow(color: .white, radius: 5, x: 1, y: 0)
                     .padding()
                 }
             } // end vstack
@@ -66,8 +67,8 @@ struct SetPlayer: View{
     var body: some View {
         VStack {
             Text("Playing \(self.video)")
-                .font(.caption2)
                 .foregroundColor(.white)
+                .font(.caption2)
                 .bold()
             
             PlayerAndControlsView(url: URL(fileURLWithPath: Bundle.main.path(forResource: video, ofType: ".mp4")!))

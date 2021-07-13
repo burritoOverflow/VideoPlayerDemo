@@ -18,7 +18,7 @@ class PlayerUIView: UIView, ObservableObject {
     private let isScrubbing: Binding<Bool>
     private var observeVideoDuration: NSKeyValueObservation?
     private var timeObservation: Any?
-
+    
     init(player: AVPlayer, videoLocation: Binding<Double>, videoDuration: Binding<Double>, isScrubbing: Binding<Bool>) {
         self.player = player
         self.videoDuration = videoDuration
@@ -30,16 +30,15 @@ class PlayerUIView: UIView, ObservableObject {
         playerLayer.player = player
         layer.addSublayer(playerLayer)
         
-        observeVideoDuration = player.currentItem?.observe(\.duration, changeHandler: { [weak self] item, change in
-            guard let value = self else { return }
-            value.videoDuration.wrappedValue = item.duration.seconds
+        self.observeVideoDuration = player.currentItem?.observe(\.duration, changeHandler: { [weak self] item, change in
+            guard let `self` = self else { return }
+            self.videoDuration.wrappedValue = item.duration.seconds
         })
         
-        timeObservation = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: nil) {
-            [weak self] time in
-            guard let value = self else { return }
-            guard !value.isScrubbing.wrappedValue else { return }
-            value.videoLocation.wrappedValue = time.seconds / value.videoDuration.wrappedValue
+        self.timeObservation = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: nil) { [weak self] time in
+            guard let `self` = self else { return }
+            guard !self.isScrubbing.wrappedValue else { return }
+            self.videoLocation.wrappedValue = time.seconds / self.videoDuration.wrappedValue
         }
         
     }

@@ -27,6 +27,7 @@ struct SummerSymbol: View {
             
             Text(name)
                 .font(.custom("Ariel", size: 18))
+                .foregroundColor(.white)
                 .frame(minWidth: 0, maxWidth: 150, minHeight: 0, maxHeight: 0, alignment: .leading)
         })
     }
