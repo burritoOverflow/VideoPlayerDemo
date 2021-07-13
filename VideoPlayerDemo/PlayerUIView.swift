@@ -30,17 +30,18 @@ class PlayerUIView: UIView, ObservableObject {
         playerLayer.player = player
         layer.addSublayer(playerLayer)
         
-        self.observeVideoDuration = self.player.currentItem?.observe(\.duration, changeHandler: { [weak self] item, change in
-            guard let _self = self else { return }
-            _self.videoDuration.wrappedValue = item.duration.seconds
+        observeVideoDuration = player.currentItem?.observe(\.duration, changeHandler: { [weak self] item, change in
+            guard let value = self else { return }
+            value.videoDuration.wrappedValue = item.duration.seconds
         })
         
-        self.timeObservation = self.player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: nil) {
+        timeObservation = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: nil) {
             [weak self] time in
-            guard let _self = self else { return }
-            guard !_self.isScrubbing.wrappedValue else { return }
-            _self.videoLocation.wrappedValue = time.seconds / _self.videoDuration.wrappedValue
+            guard let value = self else { return }
+            guard !value.isScrubbing.wrappedValue else { return }
+            value.videoLocation.wrappedValue = time.seconds / value.videoDuration.wrappedValue
         }
+        
     }
     
     required init?(coder: NSCoder) {
@@ -60,6 +61,10 @@ class PlayerUIView: UIView, ObservableObject {
             self.player.removeTimeObserver(observedTime)
             self.timeObservation = nil
         }
+    }
+    
+    private func logState(caller: String) {
+        print(caller, "Location: \(self.videoLocation.wrappedValue)", "Duration: \(self.videoDuration.wrappedValue)")
     }
     
 }

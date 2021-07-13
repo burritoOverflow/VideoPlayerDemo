@@ -14,14 +14,14 @@ struct WrappedPlayerView: UIViewRepresentable {
     @Binding var videoLocation: Double
     @Binding var videoDuration: Double
     @Binding var isScrubbing: Bool
-    let player = AVPlayer()
+    let player: AVPlayer
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<WrappedPlayerView>) {
         //
     }
     
-    func makeUIView(context: UIViewRepresentableContext<WrappedPlayerView>) -> WrappedPlayerView.UIViewType {
-        let newUIView = PlayerUIView(player: player, videoLocation: $videoLocation, videoDuration: $videoLocation, isScrubbing: $isScrubbing)
+    func makeUIView(context: UIViewRepresentableContext<WrappedPlayerView>) -> UIView {
+        let newUIView = PlayerUIView(player: player, videoLocation: $videoLocation, videoDuration: $videoDuration, isScrubbing: $isScrubbing)
         return newUIView
     }
 }

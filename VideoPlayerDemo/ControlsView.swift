@@ -13,10 +13,12 @@ struct ControlsView: View {
     @Binding var videoLocation: Double
     @Binding var videoDuration: Double
     @Binding var isScrubbing: Bool
-    let player: AVPlayer
+    
     @State private var circleProgress: CGFloat = 1.0
     @State private var isPaused = true
     @State private var isLooped = true
+    
+    let player: AVPlayer
     
     var body: some View {
         VStack {
@@ -27,12 +29,12 @@ struct ControlsView: View {
                         .padding(.leading, 25)
                     
                     // show the video time
-                    let videotime = self.removeTrailingZeroes(number:  self.videoLocation * self.videoDuration)
-                    Text("\(videotime)")
+                    let currentVideoProgress = self.removeTrailingZeroes(number:  self.videoLocation * self.videoDuration)
+                    Text("\(currentVideoProgress)")
                         .foregroundColor(.white)
                         .bold()
                         .padding(.leading, 25)
-                }
+                } // first time circle; shows progress
                 
                 // show the video percent circle
                 VStack {
@@ -43,7 +45,7 @@ struct ControlsView: View {
                         .rotationEffect(.degrees(-90))
                         .overlay(Text("\(self.removeTrailingZeroes(number: self.videoLocation * 100.0))%").bold())
                         .font(.caption)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                 }
                 
                 ZStack {
@@ -51,8 +53,8 @@ struct ControlsView: View {
                         .cornerRadius(20)
                         .frame(width: 60, height: 25)
                         .padding(.trailing, 25)
-                    let currentVideoProgress = self.removeTrailingZeroes(number: self.videoDuration)
-                    Text("\(currentVideoProgress)")
+                    
+                    Text("\(self.removeTrailingZeroes(number: self.videoDuration))")
                         .foregroundColor(.white)
                         .bold()
                         .padding(.trailing, 25)
@@ -112,11 +114,8 @@ struct ControlsView: View {
         if scrubbing {
             self.isScrubbing = true
             self.pausePlayer(true)
-        }
-        
-        if !self.isScrubbing {
+        } else {
             let targetTime = CMTime(seconds: self.videoLocation * self.videoDuration, preferredTimescale: 600)
-            
             self.player.seek(to: targetTime) { _ in
                 // done seeking
                 self.isScrubbing = false
@@ -167,6 +166,6 @@ struct ControlsView: View {
 
 struct ControlsView_Previews: PreviewProvider {
     static var previews: some View {
-        ControlsView(videoLocation: .constant(0.0), videoDuration: .constant(0.0), isScrubbing: .constant(true), player: AVPlayer()).previewLayout(.sizeThatFits)
+        ControlsView(videoLocation: .constant(0.0), videoDuration: .constant(0.0), isScrubbing: .constant(true), player: AVPlayer())
     }
 }

@@ -16,6 +16,9 @@
 		54A74209269CEC2000F0CF47 /* PlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A74208269CEC2000F0CF47 /* PlayerUIView.swift */; };
 		54A7420B269CF02200F0CF47 /* WrappedPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7420A269CF02200F0CF47 /* WrappedPlayerView.swift */; };
 		54A7420D269CF1EE00F0CF47 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7420C269CF1EE00F0CF47 /* ControlsView.swift */; };
+		54A7420F269D04CC00F0CF47 /* PlayerAndControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A7420E269D04CC00F0CF47 /* PlayerAndControlsView.swift */; };
+		54A74211269D0B8700F0CF47 /* MacroSeedling.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54A74210269D0B8700F0CF47 /* MacroSeedling.mp4 */; };
+		54A74215269D0E5600F0CF47 /* PickerSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A74214269D0E5600F0CF47 /* PickerSymbol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		54A74208269CEC2000F0CF47 /* PlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIView.swift; sourceTree = "<group>"; };
 		54A7420A269CF02200F0CF47 /* WrappedPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedPlayerView.swift; sourceTree = "<group>"; };
 		54A7420C269CF1EE00F0CF47 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		54A7420E269D04CC00F0CF47 /* PlayerAndControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAndControlsView.swift; sourceTree = "<group>"; };
+		54A74210269D0B8700F0CF47 /* MacroSeedling.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MacroSeedling.mp4; sourceTree = "<group>"; };
+		54A74214269D0E5600F0CF47 /* PickerSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSymbol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +71,13 @@
 				54A741F4269CEBEA00F0CF47 /* AppDelegate.swift */,
 				54A741F6269CEBEA00F0CF47 /* SceneDelegate.swift */,
 				54A741F8269CEBEA00F0CF47 /* ContentView.swift */,
+				54A74214269D0E5600F0CF47 /* PickerSymbol.swift */,
 				54A74208269CEC2000F0CF47 /* PlayerUIView.swift */,
 				54A7420A269CF02200F0CF47 /* WrappedPlayerView.swift */,
 				54A7420C269CF1EE00F0CF47 /* ControlsView.swift */,
+				54A7420E269D04CC00F0CF47 /* PlayerAndControlsView.swift */,
 				54A741FA269CEBEE00F0CF47 /* Assets.xcassets */,
+				54A74213269D0BBC00F0CF47 /* Videos */,
 				54A741FF269CEBEE00F0CF47 /* LaunchScreen.storyboard */,
 				54A74202269CEBEE00F0CF47 /* Info.plist */,
 				54A741FC269CEBEE00F0CF47 /* Preview Content */,
@@ -82,6 +91,14 @@
 				54A741FD269CEBEE00F0CF47 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		54A74213269D0BBC00F0CF47 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				54A74210269D0B8700F0CF47 /* MacroSeedling.mp4 */,
+			);
+			path = Videos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54A74201269CEBEE00F0CF47 /* LaunchScreen.storyboard in Resources */,
+				54A74211269D0B8700F0CF47 /* MacroSeedling.mp4 in Resources */,
 				54A741FE269CEBEE00F0CF47 /* Preview Assets.xcassets in Resources */,
 				54A741FB269CEBEE00F0CF47 /* Assets.xcassets in Resources */,
 			);
@@ -155,11 +173,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				54A7420B269CF02200F0CF47 /* WrappedPlayerView.swift in Sources */,
+				54A74215269D0E5600F0CF47 /* PickerSymbol.swift in Sources */,
 				54A741F5269CEBEA00F0CF47 /* AppDelegate.swift in Sources */,
 				54A741F7269CEBEA00F0CF47 /* SceneDelegate.swift in Sources */,
 				54A741F9269CEBEA00F0CF47 /* ContentView.swift in Sources */,
 				54A7420D269CF1EE00F0CF47 /* ControlsView.swift in Sources */,
 				54A74209269CEC2000F0CF47 /* PlayerUIView.swift in Sources */,
+				54A7420F269D04CC00F0CF47 /* PlayerAndControlsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
